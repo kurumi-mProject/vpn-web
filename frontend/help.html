@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Помощь — KomoVPN</title>
+<meta name="description" content="Как начать пользоваться KomoVPN: подключение, тарифы, промокоды, инструкции для всех платформ.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.help-wrap{max-width:860px;margin:0 auto;padding:120px 24px 80px}
+.help-hero{text-align:center;margin-bottom:64px}
+.help-hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;background:linear-gradient(135deg,#a78bfa,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+.help-hero p{color:var(--muted);font-size:1rem;max-width:520px;margin:0 auto}
+.help-toc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:56px}
+.toc-chip{padding:8px 16px;border-radius:50px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-size:.8rem;cursor:pointer;transition:.2s;text-decoration:none}
+.toc-chip:hover{border-color:#a78bfa;color:#a78bfa}
+.help-section{margin-bottom:56px}
+.help-section h2{font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.help-section h2 .sec-num{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#93c5fd);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0}
+.help-card{background:var(--glass-bg);border:1px solid var(--border);border-radius:var(--r);padding:24px;margin-bottom:14px}
+.help-card h3{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:10px}
+.help-card p,.help-card li{font-size:.88rem;color:var(--muted);line-height:1.7}
+.help-card ul,.help-card ol{padding-left:20px}
+.help-card ol li{margin-bottom:8px}
+.help-card a{color:#a78bfa;text-decoration:none}
+.help-card a:hover{text-decoration:underline}
+.step-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.step-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center}
+.step-card .step-icon{font-size:2rem;margin-bottom:10px}
+.step-card .step-n{font-size:.7rem;color:#a78bfa;font-weight:600;margin-bottom:6px}
+.step-card p{font-size:.82rem;color:var(--muted);line-height:1.5}
+.platform-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.platform-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px}
+.platform-card .pl-head{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.platform-card .pl-head span{font-size:1.3rem}
+.platform-card .pl-head strong{font-size:.9rem;color:var(--text)}
+.platform-card p{font-size:.8rem;color:var(--muted);line-height:1.5}
+.platform-card a{display:inline-block;margin-top:8px;font-size:.78rem;color:#93c5fd;text-decoration:none}
+.platform-card a:hover{text-decoration:underline}
+.promo-example{background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.25);border-radius:12px;padding:16px;margin-top:12px}
+.promo-example code{font-family:'Fira Code',monospace;font-size:.85rem;color:#a78bfa}
+.faq-item{border-bottom:1px solid var(--border);padding:16px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:.9rem;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q::after{content:'▾';color:#a78bfa;font-size:.8rem;flex-shrink:0}
+.faq-a{font-size:.85rem;color:var(--muted);line-height:1.7;margin-top:10px;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q::after{content:'▴'}
+.badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.7rem;font-weight:600;margin-left:6px}
+.badge-free{background:rgba(110,231,183,0.15);color:#6ee7b7}
+.badge-paid{background:rgba(167,139,250,0.15);color:#a78bfa}
+.help-cta{text-align:center;padding:40px 24px;background:var(--glass-bg);border:1px solid var(--border);border-radius:var(--r);margin-top:40px}
+.help-cta h3{font-size:1.2rem;font-weight:600;margin-bottom:8px}
+.help-cta p{color:var(--muted);font-size:.88rem;margin-bottom:20px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:12px 28px;border-radius:50px;background:linear-gradient(135deg,#a78bfa,#93c5fd);color:#fff;font-family:'Fira Code',monospace;font-size:.85rem;font-weight:600;border:none;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-outline{padding:12px 28px;border-radius:50px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:'Fira Code',monospace;font-size:.85rem;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s}
+.btn-outline:hover{border-color:#a78bfa;color:#a78bfa}
+@media(max-width:600px){.help-wrap{padding:100px 16px 60px}.step-grid{grid-template-columns:1fr 1fr}.platform-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="bg-mesh">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<nav class="navbar">
+  <a href="/" class="nav-logo" style="text-decoration:none;display:flex;align-items:center;gap:8px">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="url(#logoGrad)" stroke-width="2.5"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#93c5fd"/></linearGradient></defs><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    KomoVPN
+  </a>
+  <div class="nav-links">
+    <a href="/#features">Возможности</a>
+    <a href="/#plans">Тарифы</a>
+    <a href="/help" style="color:#a78bfa">Помощь</a>
+  </div>
+  <a href="/" class="btn-glass" style="text-decoration:none;padding:8px 18px;border-radius:50px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.82rem">← На главную</a>
+</nav>
+
+<div class="help-wrap">
+
+  <div class="help-hero">
+    <h1>Как пользоваться KomoVPN</h1>
+    <p>Полное руководство с нуля — от регистрации до подключения на любом устройстве</p>
+  </div>
+
+  <!-- TOC -->
+  <div class="help-toc">
+    <a href="#what" class="toc-chip">Что такое KomoVPN</a>
+    <a href="#start" class="toc-chip">Быстрый старт</a>
+    <a href="#trial" class="toc-chip">Пробный период</a>
+    <a href="#platforms" class="toc-chip">Подключение</a>
+    <a href="#promo" class="toc-chip">Промокоды</a>
+    <a href="#gpt" class="toc-chip">KomoGPT</a>
+    <a href="#faq" class="toc-chip">FAQ</a>
+  </div>
+
+  <!-- 1. Что такое -->
+  <div class="help-section" id="what">
+    <h2><span class="sec-num">1</span> Что такое KomoVPN?</h2>
+    <div class="help-card">
+      <p>KomoVPN — это сервис, который позволяет обходить блокировки сайтов и приложений в России. Работает на протоколе <strong>VLESS + XTLS-Reality</strong> — он маскирует трафик под обычный HTTPS, поэтому РКН его не блокирует.</p>
+    </div>
+    <div class="help-card">
+      <h3>Что входит в подписку</h3>
+      <ul>
+        <li>🔒 <strong>VPN</strong> — обход блокировок на всех устройствах</li>
+        <li>🌍 <strong>Прокси SOCKS5/HTTP</strong> — для отдельных приложений</li>
+        <li>📡 <strong>MTProto прокси</strong> — специально для Telegram</li>
+        <li>🤖 <strong>KomoGPT</strong> — AI-чат с 15+ моделями (GPT-5, Grok 4, DeepSeek...)</li>
+        <li>🔗 <strong>Ссылка на подписку</strong> — автообновление конфигов</li>
+        <li>🎁 <strong>7 дней бесплатно</strong> для новых пользователей</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2. Быстрый старт -->
+  <div class="help-section" id="start">
+    <h2><span class="sec-num">2</span> Быстрый старт</h2>
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-icon">💬</div>
+        <div class="step-n">ШАГ 1</div>
+        <p>Открой бота <a href="https://t.me/KomoVpn_bot" style="color:#a78bfa">@KomoVpn_bot</a> в Telegram и нажми <strong>/start</strong></p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">🎁</div>
+        <div class="step-n">ШАГ 2</div>
+        <p>Нажми <strong>«Попробовать бесплатно»</strong> — получишь 7 дней и 10 ГБ</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">🔑</div>
+        <div class="step-n">ШАГ 3</div>
+        <p>Нажми <strong>«VPN конфиг»</strong> — получишь ссылку и QR-код</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">📱</div>
+        <div class="step-n">ШАГ 4</div>
+        <p>Установи приложение для своей платформы и вставь конфиг</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Пробный период -->
+  <div class="help-section" id="trial">
+    <h2><span class="sec-num">3</span> Пробный период</h2>
+    <div class="help-card">
+      <h3>🎁 7 дней бесплатно <span class="badge badge-free">БЕСПЛАТНО</span></h3>
+      <p>Каждый новый пользователь получает пробный период автоматически:</p>
+      <ol>
+        <li>Открой <a href="https://t.me/KomoVpn_bot">@KomoVpn_bot</a></li>
+        <li>Нажми <strong>/start</strong></li>
+        <li>Нажми кнопку <strong>«🎁 Попробовать бесплатно (7 дней)»</strong></li>
+        <li>Готово — VPN и прокси активированы, 10 ГБ трафика</li>
+      </ol>
+      <p style="margin-top:10px">⚠️ Пробный период даётся один раз на аккаунт Telegram.</p>
+    </div>
+    <div class="help-card">
+      <h3>💳 Как оплатить после пробного</h3>
+      <ol>
+        <li>В боте нажми <strong>«💳 Оплатить»</strong></li>
+        <li>Выбери тариф (1 / 3 / 6 / 12 месяцев)</li>
+        <li>Переведи сумму на указанные реквизиты</li>
+        <li>Нажми <strong>«✅ Я оплатил»</strong></li>
+        <li>Дождись подтверждения от администратора (обычно до 15 минут)</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 4. Подключение -->
+  <div class="help-section" id="platforms">
+    <h2><span class="sec-num">4</span> Подключение по платформам</h2>
+    <div class="help-card" style="margin-bottom:16px">
+      <p>После активации подписки нажми <strong>«🔑 VPN конфиг»</strong> в боте — получишь ссылку подписки и QR-код. Вставь ссылку в приложение один раз — конфиги будут обновляться автоматически.</p>
+    </div>
+    <div class="platform-grid">
+      <div class="platform-card">
+        <div class="pl-head"><span>📱</span><strong>Android</strong></div>
+        <p>Приложение <strong>Happ</strong> (рекомендуем) или v2rayNG</p>
+        <ol style="font-size:.78rem;color:var(--muted);padding-left:16px;margin-top:8px">
+          <li>Установи Happ</li>
+          <li>Нажми ➕ → Import from URL</li>
+          <li>Вставь ссылку подписки</li>
+          <li>Нажми ▶️</li>
+        </ol>
+        <a href="https://play.google.com/store/apps/details?id=com.happproxy" target="_blank">Скачать Happ →</a>
+      </div>
+      <div class="platform-card">
+        <div class="pl-head"><span>🍎</span><strong>iPhone / iPad</strong></div>
+        <p>Приложение <strong>Happ</strong> (рекомендуем) или Streisand</p>
+        <ol style="font-size:.78rem;color:var(--muted);padding-left:16px;margin-top:8px">
+          <li>Установи Happ</li>
+          <li>Нажми ➕ → Import from URL</li>
+          <li>Вставь ссылку подписки</li>
+          <li>Нажми Connect</li>
+        </ol>
+        <a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" target="_blank">Скачать Happ →</a>
+      </div>
+      <div class="platform-card">
+        <div class="pl-head"><span>💻</span><strong>Windows</strong></div>
+        <p>Приложение <strong>Happ</strong> (рекомендуем) или Hiddify</p>
+        <ol style="font-size:.78rem;color:var(--muted);padding-left:16px;margin-top:8px">
+          <li>Скачай Happ по ссылке ниже</li>
+          <li>Нажми ➕ → Add from URL</li>
+          <li>Вставь ссылку подписки</li>
+          <li>Нажми Connect</li>
+        </ol>
+        <a href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe" target="_blank">Скачать Happ →</a>
+      </div>
+      <div class="platform-card">
+        <div class="pl-head"><span>🍏</span><strong>macOS</strong></div>
+        <p>Приложение <strong>Happ</strong> (рекомендуем) или Hiddify</p>
+        <ol style="font-size:.78rem;color:var(--muted);padding-left:16px;margin-top:8px">
+          <li>Скачай Happ .dmg по ссылке ниже</li>
+          <li>Нажми ➕ → Add from URL</li>
+          <li>Вставь ссылку подписки</li>
+          <li>Нажми Connect</li>
+        </ol>
+        <a href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.macOS.universal.dmg" target="_blank">Скачать Happ →</a>
+      </div>
+    </div>
+    <div class="help-card" style="margin-top:16px">
+      <h3>📡 MTProto прокси для Telegram</h3>
+      <p>Специальный прокси только для Telegram — маскирует трафик под HTTPS. В боте нажми <strong>«🌍 Прокси»</strong> → кнопка <strong>«Подключить MTProto в Telegram»</strong> — Telegram подключится автоматически.</p>
+    </div>
+  </div>
+
+  <!-- 5. Промокоды -->
+  <div class="help-section" id="promo">
+    <h2><span class="sec-num">5</span> Промокоды</h2>
+    <div class="help-card">
+      <h3>Как ввести промокод</h3>
+      <ol>
+        <li>Открой <a href="https://t.me/KomoVpn_bot">@KomoVpn_bot</a></li>
+        <li>Нажми кнопку <strong>«🎟 Промокод»</strong> в главном меню</li>
+        <li>Отправь код следующим сообщением</li>
+        <li>Дни или скидка применятся автоматически</li>
+      </ol>
+      <p style="margin-top:10px">Или используй команду <code style="color:#a78bfa">/promo</code> в боте.</p>
+    </div>
+    <div class="help-card">
+      <h3>Что дают промокоды</h3>
+      <ul>
+        <li>➕ <strong>Дополнительные дни</strong> к подписке</li>
+        <li>💰 <strong>Скидка</strong> на оплату</li>
+        <li>🎁 <strong>Бесплатный доступ</strong> на определённый срок</li>
+      </ul>
+      <div class="promo-example">
+        <p style="font-size:.8rem;color:var(--muted);margin-bottom:6px">Пример промокода:</p>
+        <code>KOMO30</code>
+        <p style="font-size:.78rem;color:var(--muted);margin-top:6px">Промокоды регистронезависимы — можно вводить заглавными или строчными буквами.</p>
+      </div>
+    </div>
+    <div class="help-card">
+      <h3>Реферальная программа</h3>
+      <p>Приглашай друзей и получай бонусы:</p>
+      <ul>
+        <li>👤 Ты получаешь <strong>+7 дней</strong> за каждого оплатившего друга</li>
+        <li>🎁 Друг получает <strong>скидку 10%</strong> на первую оплату</li>
+      </ul>
+      <p style="margin-top:10px">Свою реферальную ссылку найдёшь в боте: <strong>«👥 Рефералы»</strong></p>
+    </div>
+  </div>
+
+  <!-- 6. KomoGPT -->
+  <div class="help-section" id="gpt">
+    <h2><span class="sec-num">6</span> KomoGPT — AI-чат</h2>
+    <div class="help-card">
+      <h3>Как пользоваться</h3>
+      <p>KomoGPT доступен всем пользователям с активной подпиской. Два способа:</p>
+      <ul style="margin-top:10px">
+        <li>📱 <strong>В боте</strong> — нажми «🤖 KomoGPT» в главном меню</li>
+        <li>🤖 <strong>Отдельный бот</strong> — <a href="https://t.me/luna_komoku_bot">@luna_komoku_bot</a> с расширенными функциями</li>
+      </ul>
+    </div>
+    <div class="help-card">
+      <h3>Доступные модели по тарифам</h3>
+      <ul>
+        <li><span class="badge badge-free">Пробный</span> GPT-5 Nano, GLM-4.7 Flash, Gemini 3.1 Flash</li>
+        <li><span class="badge badge-paid">1 мес</span> + GPT-4.1 Nano, Qwen 3.5 Flash</li>
+        <li><span class="badge badge-paid">3 мес</span> + GPT-5 Mini, DeepSeek V3.2, Mistral Medium</li>
+        <li><span class="badge badge-paid">6 мес</span> + DeepSeek R1, Grok 4.1 Fast, Qwen 3.5 35B</li>
+        <li><span class="badge badge-paid">12 мес</span> + Grok 4 Fast (топовая модель)</li>
+      </ul>
+    </div>
+    <div class="help-card">
+      <h3>Возможности отдельного бота @luna_komoku_bot</h3>
+      <ul>
+        <li>🎤 Голосовые сообщения — распознаёт речь через Whisper</li>
+        <li>🖼 Анализ изображений — отправь фото и задай вопрос</li>
+        <li>⚙️ Системный промпт — задай роль боту</li>
+        <li>🎭 Режимы — переводчик, программист, аналитик, копирайтер</li>
+        <li>📤 Экспорт истории в .md файл</li>
+        <li>🔄 Повторная генерация ответа</li>
+        <li>💬 Inline-режим — @luna_komoku_bot вопрос в любом чате</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 7. FAQ -->
+  <div class="help-section" id="faq">
+    <h2><span class="sec-num">7</span> Частые вопросы</h2>
+    <div class="help-card">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">VPN не подключается — что делать?</div>
+        <div class="faq-a">
+          1. Убедись что подписка активна (в боте → «📊 Статус»)<br>
+          2. Попробуй нажать «🔄 Переподключить VPN» в разделе конфига<br>
+          3. Попробуй другой конфиг — в ссылке подписки их несколько (Finland, Stockholm, CDN)<br>
+          4. Если ничего не помогает — напиши в поддержку
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Как узнать сколько трафика осталось?</div>
+        <div class="faq-a">В боте нажми «📊 Статус» — увидишь прогресс-бар с VPN и прокси трафиком. Для актуальных данных нажми «🔄 Обновить трафик».</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Что такое ссылка на подписку?</div>
+        <div class="faq-a">Это персональная ссылка вида <code>https://lklunallm.icu/sub/...</code> — вставляешь её в приложение один раз, и оно автоматически загружает все конфиги и обновляет их при изменениях. Не передавай её другим.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Можно ли использовать на нескольких устройствах?</div>
+        <div class="faq-a">Да. У тебя 3 VPN-конфига с разными настройками — можно подключить на телефоне, планшете и компьютере одновременно. Трафик считается суммарно.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Промокод не работает — почему?</div>
+        <div class="faq-a">Возможные причины: промокод уже использован тобой, истёк срок действия, закончились использования. Проверь правильность написания — промокоды регистронезависимы.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Как войти на сайт?</div>
+        <div class="faq-a">В боте нажми «🌐 Войти на сайт» — получишь одноразовый код на 10 минут. Введи его на сайте в поле входа. После входа сессия сохраняется на 30 дней.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Где написать в поддержку?</div>
+        <div class="faq-a">В боте нажми «🆘 Поддержка» — там будет ссылка на аккаунт поддержки в Telegram.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="help-cta">
+    <h3>Готов начать?</h3>
+    <p>7 дней бесплатно — без карты, без регистрации на почте</p>
+    <div class="cta-btns">
+      <a href="https://t.me/KomoVpn_bot" class="btn-primary" target="_blank">🚀 Открыть бота</a>
+      <a href="/" class="btn-outline">На главную</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleFaq(el) {
+  el.parentElement.classList.toggle('open');
+}
+</script>
+</body>
+</html>

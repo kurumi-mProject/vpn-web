@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /sub/
+Disallow: /miniapp
+
+Sitemap: https://lklunallm.icu/sitemap.xml

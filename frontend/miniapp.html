@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>KomoVPN</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="miniapp.css?v=8">
+</head>
+<body>
+<div class="bg-mesh"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+
+<!-- Toast уведомления -->
+<div id="toast-container"></div>
+
+<!-- Модальное окно QR -->
+<div id="qr-modal" class="modal hidden">
+  <div class="modal-overlay" onclick="closeQR()"></div>
+  <div class="modal-box">
+    <div class="modal-title">QR-код конфига</div>
+    <canvas id="qr-canvas"></canvas>
+    <div id="qr-label" style="font-size:.72rem;color:var(--muted);margin-top:8px;text-align:center"></div>
+    <button class="btn btn-ghost btn-sm mt" onclick="closeQR()">✕ Закрыть</button>
+  </div>
+</div>
+
+<div id="app">
+
+  <!-- HOME -->
+  <div class="screen active" id="s-home">
+    <div class="uh">
+      <div class="ua" id="user-avatar">⚡</div>
+      <div style="flex:1">
+        <div class="un" id="home-name">KomoVPN</div>
+        <div class="us" id="home-sub">Загрузка...</div>
+      </div>
+      <button class="icon-btn" onclick="goTab('settings')" title="Настройки">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      </button>
+    </div>
+    <div class="card" id="status-card"><div class="loading">⏳ Авторизация...</div></div>
+    <div class="card hidden" id="quick-card">
+      <div class="ct">Быстрые действия</div>
+      <div class="row">
+        <button class="btn btn-primary" onclick="goTab('vpn')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6l-8-4z"/></svg>
+          VPN
+        </button>
+        <button class="btn btn-blue" onclick="goTab('proxy')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20"/></svg>
+          Прокси
+        </button>
+      </div>
+      <div class="row mt">
+        <button class="btn btn-ghost" onclick="goTab('sub')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          Подписка
+        </button>
+        <button class="btn btn-ghost" onclick="goTab('plans')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Тарифы
+        </button>
+      </div>
+      <div class="row mt">
+        <button class="btn btn-ghost" onclick="goTab('ai')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          AI Чат
+        </button>
+        <button class="btn btn-ghost" onclick="goTab('server')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          Сервер
+        </button>
+      </div>
+      <button class="btn btn-ghost mt" id="mtproto-btn" onclick="loadMTProto()" style="display:none">
+        📡 MTProto прокси для Telegram
+      </button>
+      <a href="https://t.me/KomoVpn_bot" class="btn btn-tg mt">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.04 9.613c-.152.67-.548.835-1.11.52l-3.07-2.263-1.482 1.426c-.164.164-.3.3-.616.3l.22-3.11 5.666-5.117c.246-.22-.054-.342-.382-.122L7.26 14.6l-3.02-.944c-.657-.205-.67-.657.137-.973l11.79-4.547c.547-.198 1.026.133.847.97l-.452.142z"/></svg>
+        Открыть бот
+      </a>
+    </div>
+    <div class="card hidden" id="features-card">
+      <div class="ct">Возможности</div>
+      <div class="ir"><div class="ii"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div><div style="font-weight:600">VLESS + XTLS-Reality</div><div class="it">Протокол нового поколения, не блокируется</div></div></div>
+      <div class="ir"><div class="ii"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div><div style="font-weight:600">Без ограничений скорости</div><div class="it">Максимальная скорость вашего канала</div></div></div>
+      <div class="ir"><div class="ii"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20"/></svg></div><div><div style="font-weight:600">VPN + Прокси в комплекте</div><div class="it">SOCKS5 и HTTP, единый счётчик трафика</div></div></div>
+      <div class="ir"><div class="ii"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div style="font-weight:600">Сервер в Финляндии</div><div class="it">Helsinki · низкий пинг для СНГ</div></div></div>
+      <div class="ir"><div class="ii"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div><div><div style="font-weight:600">Все платформы</div><div class="it">Android, iOS, Windows, macOS, Linux</div></div></div>
+    </div>
+  </div>
+
+  <!-- VPN -->
+  <div class="screen" id="s-vpn">
+    <div class="section-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6l-8-4z"/></svg>
+      VPN конфиг
+    </div>
+    <div id="vpn-content"><div class="loading">⏳</div></div>
+  </div>
+
+  <!-- PROXY -->
+  <div class="screen" id="s-proxy">
+    <div class="section-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20"/></svg>
+      Прокси
+    </div>
+    <div id="proxy-content"><div class="loading">⏳</div></div>
+  </div>
+
+  <!-- SUB -->
+  <div class="screen" id="s-sub">
+    <div class="section-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+      Подписка
+    </div>
+    <div id="sub-content"><div class="loading">⏳</div></div>
+  </div>
+
+  <!-- PLANS -->
+  <div class="screen" id="s-plans">
+    <div class="section-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Тарифы
+    </div>
+    <div id="plans-content"><div class="loading">⏳</div></div>
+  </div>
+
+  <!-- AI CHAT -->
+  <div class="screen" id="s-ai">
+    <div class="section-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      AI Чат
+      <button id="ai-clear-btn" class="icon-btn ml-auto" onclick="clearAIChat()" title="Очистить чат" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+      </button>
+    </div>
+    <div id="ai-model-bar" class="hidden">
+      <div class="model-chip" onclick="openModelPicker()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        <span id="ai-model-name">GPT</span>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div id="ai-messages"></div>
+    <div id="ai-input-area" class="hidden">
+      <div class="ai-input-row">
+        <textarea id="ai-input" placeholder="Напишите сообщение..." rows="1" onkeydown="aiKeyDown(event)" oninput="autoResize(this)"></textarea>
+        <button id="ai-send-btn" onclick="sendAI()" class="send-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="ai-content"></div>
+  </div>
+
+  <!-- SERVER STATUS -->
+  <div class="screen" id="s-server">
+    <div class="section-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+      Статус сервера
+      <button class="icon-btn ml-auto" onclick="loadServer(true)" title="Обновить">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+      </button>
+    </div>
+    <div id="server-content"><div class="loading">⏳</div></div>
+  </div>
+
+  <!-- REFERRALS -->
+  <div class="screen" id="s-ref">
+    <div class="section-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      Рефералы
+    </div>
+    <div id="ref-content"><div class="loading">⏳</div></div>
+  </div>
+
+  <!-- PAYMENTS HISTORY -->
+  <div class="screen" id="s-payments">
+    <div class="section-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      История платежей
+    </div>
+    <div id="payments-content"><div class="loading">⏳</div></div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="screen" id="s-settings">
+    <div class="section-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      Настройки
+    </div>
+    <div id="settings-content"></div>
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="nav">
+  <div class="ni active" id="nav-home" onclick="goTab('home')">
+    <div class="ni-dot"></div>
+    <div class="ni-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+    <div class="ni-label">Главная</div>
+  </div>
+  <div class="ni" id="nav-vpn" onclick="goTab('vpn')">
+    <div class="ni-dot"></div>
+    <div class="ni-icon"><svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6l-8-4z"/></svg></div>
+    <div class="ni-label">VPN</div>
+  </div>
+  <div class="ni" id="nav-proxy" onclick="goTab('proxy')">
+    <div class="ni-dot"></div>
+    <div class="ni-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
+    <div class="ni-label">Прокси</div>
+  </div>
+  <div class="ni" id="nav-ai" onclick="goTab('ai')">
+    <div class="ni-dot"></div>
+    <div class="ni-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+    <div class="ni-label">AI</div>
+  </div>
+  <div class="ni" id="nav-plans" onclick="goTab('plans')">
+    <div class="ni-dot"></div>
+    <div class="ni-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+    <div class="ni-label">Тарифы</div>
+  </div>
+</nav>
+
+<!-- Model picker modal -->
+<div id="model-modal" class="modal hidden">
+  <div class="modal-overlay" onclick="closeModelPicker()"></div>
+  <div class="modal-box">
+    <div class="modal-title">Выберите модель</div>
+    <div id="model-list"></div>
+    <button class="btn btn-ghost btn-sm mt" onclick="closeModelPicker()">✕ Закрыть</button>
+  </div>
+</div>
+
+<script src="miniapp.js?v=8"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+*.db
+*.log
+
+# Backups
+*.bak
+*.bak2
+
+# Yandex verification
+yandex_*.html
+
+# Archives
+*.zip
+
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KomoVPN — быстрый VPN без блокировок | VLESS + XTLS-Reality</title>
+<meta name="description" content="KomoVPN — надёжный VPN-сервис с протоколом VLESS + XTLS-Reality. Обходит блокировки РКН, без ограничений скорости. Сервер в Финляндии. От 150₽/мес. Бесплатный пробный период 7 дней.">
+<meta name="keywords" content="VPN, купить VPN, VPN Россия, обход блокировок, VLESS, XTLS Reality, VPN без блокировок, быстрый VPN, дешёвый VPN, VPN для телеграм, прокси SOCKS5">
+<meta name="robots" content="index, follow">
+<meta name="author" content="KomoVPN">
+<link rel="canonical" href="https://lklunallm.icu/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lklunallm.icu/">
+<meta property="og:title" content="KomoVPN — быстрый VPN без блокировок">
+<meta property="og:description" content="Надёжный VPN с протоколом VLESS + XTLS-Reality. Обходит блокировки РКН. Сервер в Финляндии. От 150₽/мес. Бесплатный пробный период 7 дней.">
+<meta property="og:image" content="https://lklunallm.icu/og-image.png">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="KomoVPN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KomoVPN — быстрый VPN без блокировок">
+<meta name="twitter:description" content="VLESS + XTLS-Reality. Обходит РКН. Сервер в Финляндии. От 150₽/мес.">
+<meta name="twitter:image" content="https://lklunallm.icu/og-image.png">
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "KomoVPN",
+  "url": "https://lklunallm.icu",
+  "description": "Надёжный VPN-сервис с протоколом VLESS + XTLS-Reality. Обходит блокировки РКН без ограничений скорости.",
+  "applicationCategory": "SecurityApplication",
+  "operatingSystem": "Android, iOS, Windows, macOS, Linux",
+  "offers": {
+    "@type": "Offer",
+    "price": "150",
+    "priceCurrency": "RUB",
+    "description": "VPN подписка на 1 месяц"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "128"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+<body>
+<div class="bg-mesh">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="orb orb4"></div>
+</div>
+
+<nav class="navbar">
+  <div class="nav-logo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="url(#logoGrad)" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    KomoVPN
+  </div>
+  <div class="nav-links">
+    <a href="#features">Возможности</a>
+    <a href="#plans">Тарифы</a>
+    <a href="#connect">Подключение</a>
+    <a href="/help">Помощь</a>
+  </div>
+  <div id="nav-auth">
+    <button class="btn-glass" onclick="showAuth()">Войти</button>
+  </div>
+  <button class="nav-burger" onclick="toggleMobileMenu()" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu glass" id="mobile-menu">
+  <a href="#features" onclick="toggleMobileMenu()">Возможности</a>
+  <a href="#plans" onclick="toggleMobileMenu()">Тарифы</a>
+  <a href="#connect" onclick="toggleMobileMenu()">Подключение</a>
+  <button class="btn-primary" style="width:100%;margin-top:8px" onclick="toggleMobileMenu();showAuth()">Войти</button>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      KomoVPN · KomoGPT
+    </div>
+    <h1><span class="typewriter" id="tw-main">Интернет + AI</span><br><span class="gradient-text typewriter-gradient" id="tw-sub">в одной подписке</span></h1>
+    <p class="hero-sub">VPN нового поколения и доступ к лучшим AI-моделям. Одна подписка — всё включено.</p>
+    <div class="hero-service-btns">
+      <button class="hero-service-btn vpn-btn" onclick="showAuth()">
+        <div class="hero-service-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6l-8-4z"/></svg>
+        </div>
+        <div class="hero-service-text">
+          <span class="hero-service-name">KomoVPN</span>
+          <span class="hero-service-desc">VLESS · SOCKS5 · HTTP</span>
+        </div>
+        <svg class="hero-service-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <button class="hero-service-btn gpt-btn" onclick="showAuth()">
+        <div class="hero-service-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="hero-service-text">
+          <span class="hero-service-name">KomoGPT</span>
+          <span class="hero-service-desc">GPT-5 · Grok · DeepSeek · Gemini</span>
+        </div>
+        <svg class="hero-service-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="hero-btns" style="margin-top:16px">
+      <button class="btn-primary" onclick="showAuth()">Начать бесплатно
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;margin-left:4px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <a href="https://t.me/KomoVpn_bot" class="btn-glass" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.04 9.613c-.152.67-.548.835-1.11.52l-3.07-2.263-1.482 1.426c-.164.164-.3.3-.616.3l.22-3.11 5.666-5.117c.246-.22-.054-.342-.382-.122L7.26 14.6l-3.02-.944c-.657-.205-.67-.657.137-.973l11.79-4.547c.547-.198 1.026.133.847.97l-.452.142z"/></svg>
+        Telegram бот
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat glass"><span class="stat-n">∞</span><span>Скорость</span></div>
+      <div class="stat glass"><span class="stat-n">15+</span><span>AI моделей</span></div>
+      <div class="stat glass"><span class="stat-n">150₽</span><span>От /мес</span></div>
+      <div class="stat glass"><span class="stat-n">7 дней</span><span>Бесплатно</span></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Features -->
+<section id="features">
+  <h2 class="section-title">Почему выбирают нас</h2>
+  <p class="section-sub">Современные технологии, простое управление, честные цены</p>
+  <div class="cards">
+    <div class="card glass anim">
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+      <h3>XTLS-Reality</h3><p>Протокол нового поколения. Маскируется под обычный HTTPS — не определяется блокировщиками.</p>
+    </div>
+    <div class="card glass anim">
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <h3>Без ограничений скорости</h3><p>Максимальная скорость вашего интернета. Никаких искусственных лимитов и троттлинга.</p>
+    </div>
+    <div class="card glass anim">
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
+      <h3>VPN + Прокси</h3><p>SOCKS5 и HTTP прокси в комплекте. Единый счётчик трафика для всех протоколов.</p>
+    </div>
+    <div class="card glass anim">
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+      <h3>Все платформы</h3><p>Android, iOS, Windows, macOS, Linux. Подробные инструкции для каждой платформы.</p>
+    </div>
+    <div class="card glass anim">
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.04 9.613c-.152.67-.548.835-1.11.52l-3.07-2.263-1.482 1.426c-.164.164-.3.3-.616.3l.22-3.11 5.666-5.117c.246-.22-.054-.342-.382-.122L7.26 14.6l-3.02-.944c-.657-.205-.67-.657.137-.973l11.79-4.547c.547-.198 1.026.133.847.97l-.452.142z"/></svg></div>
+      <h3>Telegram бот</h3><p>Управление подпиской прямо в Telegram. QR-код и ссылка для быстрого подключения.</p>
+    </div>
+    <div class="card glass anim">
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Реферальная программа</h3><p>+7 дней за каждого оплатившего друга. Скидки до 30% при оплате на 3+ месяца.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Plans -->
+<section id="plans">
+  <h2 class="section-title">Тарифы</h2>
+  <p class="section-sub">VPN + Прокси. Трафик на весь период: 50 / 300 / 900 / 2400 ГБ</p>
+  <div class="plans">
+    <div class="plan glass anim" data-plan="1" onclick="selectPlan(this,1,'150₽','1 месяц')">
+      <div class="plan-select-ring"></div>
+      <div class="plan-label">1 месяц</div>
+      <div class="plan-price">150₽</div>
+      <div class="plan-per">50 ГБ трафика</div>
+      <ul class="plan-features">
+      </ul>
+      <button class="btn-plan">Выбрать</button>
+    </div>
+    <div class="plan glass featured anim" data-plan="3" onclick="selectPlan(this,3,'405₽','3 месяца')">
+      <div class="plan-select-ring"></div>
+      <div class="plan-badge">⭐ Популярный</div>
+      <div class="plan-label">3 месяца</div>
+      <div class="plan-price">405₽</div>
+      <div class="plan-per">135₽/мес · скидка 10%</div>
+      <ul class="plan-features">
+      </ul>
+      <button class="btn-plan">Выбрать</button>
+    </div>
+    <div class="plan glass anim" data-plan="6" onclick="selectPlan(this,6,'720₽','6 месяцев')">
+      <div class="plan-select-ring"></div>
+      <div class="plan-label">6 месяцев</div>
+      <div class="plan-price">720₽</div>
+      <div class="plan-per">120₽/мес · скидка 20%</div>
+      <ul class="plan-features">
+      </ul>
+      <button class="btn-plan">Выбрать</button>
+    </div>
+    <div class="plan glass anim" data-plan="12" onclick="selectPlan(this,12,'1260₽','12 месяцев')">
+      <div class="plan-select-ring"></div>
+      <div class="plan-label">12 месяцев</div>
+      <div class="plan-price">1260₽</div>
+      <div class="plan-per">105₽/мес · скидка 30%</div>
+      <ul class="plan-features">
+      </ul>
+      <button class="btn-plan">Выбрать</button>
+    </div>
+  </div>
+  <!-- Plan confirm bar -->
+  <div class="plan-confirm-bar glass" id="plan-confirm-bar">
+    <div class="plan-confirm-info">
+      <span class="plan-confirm-name" id="plan-confirm-name"></span>
+      <span class="plan-confirm-price" id="plan-confirm-price"></span>
+    </div>
+    <button class="btn-primary" onclick="confirmPlan()">Оформить подписку →</button>
+  </div>
+</section>
+
+<!-- Connect -->
+<section id="connect">
+  <h2 class="section-title">Как подключиться</h2>
+  <p class="section-sub">Займёт меньше 2 минут</p>
+  <div class="steps">
+    <div class="step glass anim"><div class="step-n">1</div><h3>Войдите через бот</h3><p>Получите код в @KomoVpn_bot и введите на сайте</p></div>
+    <div class="step-arrow">→</div>
+    <div class="step glass anim"><div class="step-n">2</div><h3>Оплатите тариф</h3><p>Выберите удобный план в боте</p></div>
+    <div class="step-arrow">→</div>
+    <div class="step glass anim"><div class="step-n">3</div><h3>Получите конфиг</h3><p>QR-код или VLESS ссылка</p></div>
+    <div class="step-arrow">→</div>
+    <div class="step glass anim"><div class="step-n">4</div><h3>Подключайтесь</h3><p>v2rayNG · Streisand · Hiddify</p></div>
+  </div>
+</section>
+
+<!-- Auth Modal -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal glass" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="hideAuth()">✕</button>
+    <h2>Войти в аккаунт</h2>
+    <p class="modal-sub">Получите код в боте <a href="https://t.me/KomoVpn_bot" target="_blank" style="color:var(--blue)">@KomoVpn_bot</a> → кнопка «🌐 Войти на сайт»</p>
+    <input id="login-code-input" type="text" placeholder="Вставьте код из бота..." autocomplete="off">
+    <button class="btn-primary" style="width:100%" onclick="loginByCode()">Войти →</button>
+    <div id="login-error" style="color:#ff5050;font-size:.84rem;margin-top:10px;display:none"></div>
+    <div class="divider"><span>или</span></div>
+    <a href="https://t.me/KomoVpn_bot" class="btn-tg" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.04 9.613c-.152.67-.548.835-1.11.52l-3.07-2.263-1.482 1.426c-.164.164-.3.3-.616.3l.22-3.11 5.666-5.117c.246-.22-.054-.342-.382-.122L7.26 14.6l-3.02-.944c-.657-.205-.67-.657.137-.973l11.79-4.547c.547-.198 1.026.133.847.97l-.452.142z"/></svg>
+      Получить код в боте
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DASHBOARD PAGE (full-screen, replaces main content)
+═══════════════════════════════════════════════════════════════ -->
+<div id="dashboard-page" class="dash-page hidden">
+
+  <!-- Sidebar -->
+  <aside class="dash-sidebar glass">
+    <div class="dash-sidebar-logo">⚡ KomoVPN</div>
+    <nav class="dash-nav">
+      <button class="dash-nav-item active" onclick="switchDashTab('overview')">
+        <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span>Обзор</span>
+      </button>
+      <button class="dash-nav-item" onclick="switchDashTab('vpn')">
+        <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6l-8-4z"/></svg>
+        <span>VPN</span>
+      </button>
+      <button class="dash-nav-item" onclick="switchDashTab('proxy')">
+        <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        <span>Прокси</span>
+      </button>
+      <button class="dash-nav-item" onclick="switchDashTab('plans')">
+        <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Тарифы</span>
+      </button>
+      <button class="dash-nav-item" onclick="switchDashTab('referral')">
+        <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        <span>Рефералы</span>
+      </button>
+      <button class="dash-nav-item" onclick="switchDashTab('gpt')">
+        <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <span>KomoGPT</span>
+      </button>
+    </nav>
+    <div class="dash-sidebar-footer">
+      <div class="dash-user-mini">
+        <img id="dash-avatar-mini" src="" class="dash-avatar-mini" onerror="this.style.display='none'">
+        <div>
+          <div id="dash-name-mini" class="dash-name-mini"></div>
+          <div class="dash-status-dot-wrap"><span class="dash-status-dot active"></span><span id="dash-sub-status-mini" style="font-size:.72rem;color:var(--muted)"></span></div>
+        </div>
+      </div>
+      <button class="dash-logout-btn" onclick="logout()">Выйти</button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="dash-main">
+
+    <!-- ── Overview ── -->
+    <div id="dtab-overview" class="dtab active">
+      <div class="dash-topbar">
+        <div>
+          <h2 class="dash-page-title">Добро пожаловать, <span id="dash-greeting-name"></span> 👋</h2>
+          <p class="dash-page-sub">Ваш личный кабинет</p>
+        </div>
+        <div id="dash-sub-badge-wrap"></div>
+      </div>
+
+      <div class="dash-overview-grid">
+        <!-- Status card -->
+        <div class="dash-widget glass dash-widget-wide">
+          <div class="dash-widget-label">Статус подписки</div>
+          <div id="ov-status-content"></div>
+        </div>
+
+        <!-- Traffic donut -->
+        <div class="dash-widget glass">
+          <div class="dash-widget-label">Трафик</div>
+          <div class="donut-wrap">
+            <svg class="donut-svg" viewBox="0 0 80 80">
+              <circle class="donut-bg" cx="40" cy="40" r="30" fill="none" stroke-width="8"/>
+              <circle class="donut-fill" id="donut-fill" cx="40" cy="40" r="30" fill="none" stroke-width="8"
+                stroke-dasharray="188.5" stroke-dashoffset="188.5" stroke-linecap="round"/>
+            </svg>
+            <div class="donut-center">
+              <span id="donut-pct" class="donut-pct">0%</span>
+              <span class="donut-label">использовано</span>
+            </div>
+          </div>
+          <div class="donut-stats">
+            <span id="donut-used">0 ГБ</span>
+            <span style="color:var(--muted)">из</span>
+            <span>100 ГБ</span>
+          </div>
+          <div id="traffic-detail" style="margin-top:14px"></div>
+        </div>
+
+        <!-- Days left -->
+        <div class="dash-widget glass">
+          <div class="dash-widget-label">До конца подписки</div>
+          <div id="ov-days-left" class="days-left-big">—</div>
+          <div id="ov-paid-until" style="font-size:.78rem;color:var(--muted);margin-top:4px"></div>
+          <div class="days-bar-track"><div class="days-bar-fill" id="days-bar-fill"></div></div>
+        </div>
+
+        <!-- Quick actions -->
+        <div class="dash-widget glass">
+          <div class="dash-widget-label">Быстрые действия</div>
+          <div class="quick-actions">
+            <button class="quick-btn" onclick="switchDashTab('vpn')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6l-8-4z"/></svg>VPN конфиг
+            </button>
+            <button class="quick-btn" onclick="switchDashTab('proxy')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20"/></svg>Прокси
+            </button>
+            <button class="quick-btn" onclick="switchDashTab('plans')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Продлить
+            </button>
+            <a href="https://t.me/KomoVpn_bot" class="quick-btn" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.04 9.613c-.152.67-.548.835-1.11.52l-3.07-2.263-1.482 1.426c-.164.164-.3.3-.616.3l.22-3.11 5.666-5.117c.246-.22-.054-.342-.382-.122L7.26 14.6l-3.02-.944c-.657-.205-.67-.657.137-.973l11.79-4.547c.547-.198 1.026.133.847.97l-.452.142z"/></svg>Бот
+            </a>
+          </div>
+        </div>
+
+        <!-- Activity sparkline (decorative) -->
+        <div class="dash-widget glass dash-widget-wide">
+          <div class="dash-widget-label">Активность за 7 дней</div>
+          <div class="sparkline-wrap">
+            <canvas id="sparkline" height="60"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── VPN ── -->
+    <div id="dtab-vpn" class="dtab">
+      <div class="dash-topbar">
+        <div><h2 class="dash-page-title">VPN конфиг</h2><p class="dash-page-sub">VLESS + XTLS-Reality</p></div>
+      </div>
+      <div class="vpn-config-card glass">
+        <div class="vpn-config-header">
+          <div class="vpn-protocol-badge">VLESS · XTLS-Reality</div>
+          <button class="btn-icon-sm" onclick="loadVPN()" title="Обновить">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+          </button>
+        </div>
+        <div id="vpn-content" class="config-box glass-inner"></div>
+        <div class="vpn-apps">
+          <div class="vpn-app-label">Приложения для подключения:</div>
+          <div class="vpn-app-list">
+            <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank" class="vpn-app-chip">📱 v2rayNG</a>
+            <a href="https://apps.apple.com/app/streisand/id6450534064" target="_blank" class="vpn-app-chip">🍎 Streisand</a>
+            <a href="https://hiddify.com" target="_blank" class="vpn-app-chip">💻 Hiddify</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Proxy ── -->
+    <div id="dtab-proxy" class="dtab">
+      <div class="dash-topbar">
+        <div><h2 class="dash-page-title">Прокси</h2><p class="dash-page-sub">SOCKS5 + HTTP</p></div>
+      </div>
+      <div class="proxy-grid">
+        <div class="proxy-card glass">
+          <div class="proxy-card-header"><span class="proxy-type-badge socks">SOCKS5</span><span id="proxy-socks-port" class="proxy-port"></span></div>
+          <div id="proxy-socks-content"></div>
+          <a id="proxy-tg-socks" href="#" class="btn-primary proxy-tg-btn" target="_blank">🔌 Подключить в Telegram</a>
+        </div>
+        <div class="proxy-card glass">
+          <div class="proxy-card-header"><span class="proxy-type-badge http">HTTP</span><span id="proxy-http-port" class="proxy-port"></span></div>
+          <div id="proxy-http-content"></div>
+          <a id="proxy-tg-http" href="#" class="btn-primary proxy-tg-btn" target="_blank">🔌 Подключить в Telegram</a>
+        </div>
+      </div>
+      <div id="proxy-shared-content" class="glass proxy-shared"></div>
+    </div>
+
+    <!-- ── Plans ── -->
+    <div id="dtab-plans" class="dtab">
+      <div class="dash-topbar">
+        <div><h2 class="dash-page-title">Тарифы</h2><p class="dash-page-sub">Продлите или смените план</p></div>
+      </div>
+      <div class="dash-plans-grid">
+        <div class="dash-plan glass" onclick="selectDashPlan(this,'1 месяц','150₽')">
+          <div class="dash-plan-months">1 мес</div>
+          <div class="dash-plan-price">150₽</div>
+          <div class="dash-plan-per">50 ГБ</div>
+        </div>
+        <div class="dash-plan glass featured" onclick="selectDashPlan(this,'3 месяца','405₽')">
+          <div class="dash-plan-badge">⭐ Хит</div>
+          <div class="dash-plan-months">3 мес</div>
+          <div class="dash-plan-price">405₽</div>
+          <div class="dash-plan-per">300 ГБ · −10%</div>
+        </div>
+        <div class="dash-plan glass" onclick="selectDashPlan(this,'6 месяцев','720₽')">
+          <div class="dash-plan-months">6 мес</div>
+          <div class="dash-plan-price">720₽</div>
+          <div class="dash-plan-per">900 ГБ · −20%</div>
+        </div>
+        <div class="dash-plan glass" onclick="selectDashPlan(this,'12 месяцев','1260₽')">
+          <div class="dash-plan-badge best">🔥 Выгодно</div>
+          <div class="dash-plan-months">12 мес</div>
+          <div class="dash-plan-price">1260₽</div>
+          <div class="dash-plan-per">2400 ГБ · −30%</div>
+        </div>
+      </div>
+      <div id="dash-plan-confirm" class="dash-plan-confirm glass hidden">
+        <div>
+          <div id="dash-plan-confirm-name" style="font-weight:700;font-size:1rem"></div>
+          <div id="dash-plan-confirm-price" style="color:var(--muted);font-size:.85rem;margin-top:2px"></div>
+        </div>
+        <a href="https://t.me/KomoVpn_bot" target="_blank" class="btn-primary">Оплатить в боте →</a>
+      </div>
+    </div>
+
+    <!-- ── Referral ── -->
+    <div id="dtab-referral" class="dtab">
+      <div class="dash-topbar">
+        <div><h2 class="dash-page-title">Рефералы</h2><p class="dash-page-sub">Приглашайте друзей — получайте дни</p></div>
+      </div>
+      <div class="ref-hero glass">
+        <div class="ref-hero-icon">🎁</div>
+        <div class="ref-hero-text">
+          <h3>+7 дней за каждого друга</h3>
+          <p>Поделитесь ссылкой — когда друг оплатит подписку, вы получите 7 дней бесплатно</p>
+        </div>
+      </div>
+      <div class="ref-link-wrap glass">
+        <div class="ref-link-label">Ваша реферальная ссылка</div>
+        <div class="ref-link-row">
+          <div id="ref-link-val" class="ref-link-val">Загружаю...</div>
+          <button class="btn-glass ref-copy-btn" onclick="copyRefLink()">Копировать</button>
+        </div>
+      </div>
+      <div class="ref-stats-row">
+        <div class="ref-stat glass"><div class="ref-stat-n" id="ref-count">—</div><div class="ref-stat-label">Приглашено</div></div>
+        <div class="ref-stat glass"><div class="ref-stat-n" id="ref-days">—</div><div class="ref-stat-label">Дней получено</div></div>
+      </div>
+    </div>
+
+    <!-- ── KomoGPT ── -->
+    <div id="dtab-gpt" class="dtab">
+      <div class="dash-topbar">
+        <div><h2 class="dash-page-title">KomoGPT</h2><p class="dash-page-sub">AI-ассистент — 15+ моделей</p></div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="btn-glass" onclick="gptExport()" style="font-size:.8rem;padding:6px 14px" title="Экспорт в .md">📤</button>
+          <button class="btn-glass" onclick="gptClearHistory()" style="font-size:.8rem;padding:6px 14px">🗑 Новый чат</button>
+        </div>
+      </div>
+
+      <!-- Model selector -->
+      <div class="gpt-model-bar glass" id="gpt-model-bar">
+        <div class="gpt-model-bar-label">Модель:</div>
+        <div class="gpt-model-chips" id="gpt-model-chips">
+          <div class="gpt-model-loading">Загрузка моделей...</div>
+        </div>
+      </div>
+
+      <!-- Search bar -->
+      <div class="gpt-search-bar">
+        <input id="gpt-search-input" class="gpt-search-input" type="text" placeholder="🔍 Поиск по истории..." oninput="gptSearch()">
+      </div>
+
+      <!-- Chat area -->
+      <div class="gpt-chat-wrap glass">
+        <div class="gpt-messages" id="gpt-messages">
+          <div class="gpt-welcome">
+            <div class="gpt-welcome-icon">🤖</div>
+            <div class="gpt-welcome-title">KomoGPT</div>
+            <div class="gpt-welcome-text">Выбери модель выше и напиши сообщение.<br>Поддерживаю markdown, код, таблицы.</div>
+          </div>
+        </div>
+        <div class="gpt-input-row">
+          <div class="gpt-input-wrap">
+            <textarea id="gpt-input" class="gpt-input" placeholder="Напиши сообщение... (Enter — отправить, Shift+Enter — новая строка)" rows="1"
+              onkeydown="gptKeydown(event)" oninput="gptAutoResize(this)"></textarea>
+            <span id="gpt-char-counter" class="gpt-char-counter"></span>
+          </div>
+          <button class="gpt-send-btn" onclick="gptSend()" id="gpt-send-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="footer glass" id="main-footer">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="url(#logoGrad)" stroke-width="2.5" style="vertical-align:middle;margin-right:4px"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+  VPN © 2026 &nbsp;·&nbsp; <a href="https://t.me/KomoVpn_bot" target="_blank">Telegram бот</a> &nbsp;·&nbsp; <span style="color:var(--purple)">KomoVPN</span>
+</footer>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="donutGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b06fff"/>
+      <stop offset="100%" stop-color="#ff6ec7"/>
+    </linearGradient>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6ec7"/>
+      <stop offset="50%" stop-color="#b06fff"/>
+      <stop offset="100%" stop-color="#5edfff"/>
+    </linearGradient>
+  </defs>
+</svg>
+<div id="toast-container"></div>
+<script src="app.js?v=9"></script>
+</body>
+</html>
